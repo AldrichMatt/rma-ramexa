@@ -1,43 +1,10 @@
 "use client"
 import Image from 'next/image'
+import Back from '../../back'
 import Nav from '../../nav'
+import { Card } from '../page';
 
 
-export function GetDate(){
-      const date = new Date();
-      const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-      var year = date.getFullYear();
-      var month = parseInt(date.getMonth()) + 1;
-      var d = days[date.getDay()];
-      var day = date.getDate();
-      var hour = date.getHours(); 
-      var minute = date.getMinutes(); 
-      var second = date.getSeconds(); 
-      
-      if(month < 10){
-          month = 0 + month.toString();
-      }
-      if(day < 10){
-          day = 0 + day.toString();
-      }
-      if(hour < 10){
-          hour = 0 + hour.toString();
-      }
-
-      if(minute < 10){
-          minute = 0 + minute.toString();
-      }
-  
-      if(second < 10){
-          second = 0 + second.toString();
-      }
-
-      return (
-        <>
-        <p>{d + ", " + day + "-" + month + "-" + year + " " + hour + ":" + minute + ":" +second }</p>
-        </>
-      );
-}
 
 export function Input(props){
   return(
@@ -53,24 +20,17 @@ export default function Home() {
   return (
     <main >
       <Nav></Nav>
-      <div className="flex min-h-screen flex-col items-center justify-between px-24">
-      <div className="z-10 w-full max-w-5xl flex flex-col justify-center pt-24 text-sm">
-        <a href="/backoffice" className='inline-flex transition ease-out duration-150 hover:underline'>
-          <Image
-          className='mr-1'
-          src="/../public/arrow-left.png"
-          height={13}
-          width={18}
-          ></Image>
-          <p>
-          Back
-          </p>
-        </a>
-        <p className="text-2xl font-semibold">RMA Request Form</p>
-        <GetDate></GetDate>
-        <Input label="Customer's Name" pl="John Doe" type="text"></Input>
-        <Input label="Phone Number" pl="081xxxxxxxxx" type="number"></Input>
-        <Input label="Sales Name" pl="John Doe" type="text"></Input>
+      <div className="flex min-h-screen flex-col items-center justify-between">
+      <div className="z-10 w-full max-w-5xl flex flex-col justify-center pt-16 text-sm ">
+        <div className='px-8 xl:px-16 lg:px-16 md:px-16 sm:px-8 xs:px-8'>
+          <Back to="../backoffice"></Back>
+        <p className="text-2xl font-semibold">RMA Master</p>
+        </div>
+        <div className="flex flex-row -m-2 mt-4 justify-center flex-wrap xl:px-8 lg:px-8 md:px-2 sm:px-24">
+        <Card to="./warranty/form/" img="/../public/form-new.png" text="Create new RMA Form"></Card>
+        <Card to="./warranty/items/" img="/../public/form-time.png" text="Items warrant & duration"></Card>
+        <Card to="#" img="/../public/form-gear.png" text="Warranty Master"></Card>
+        </div>
         </div>
       </div>
     </main>

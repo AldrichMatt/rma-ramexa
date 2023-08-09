@@ -11,8 +11,8 @@ export default function(){
         href="#">
           <Image
           src = "/../public/RMX.png"
-          width={180}
-          height={100}
+          width={108}
+          height={60}
           alt='RAMEXA Logo'
           ></Image>
       </a>

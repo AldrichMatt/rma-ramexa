@@ -1,15 +1,24 @@
 "use client"
 import Image from 'next/image'
 import Nav from '../nav'
-export default function Home() {
+
+export function Label(props){
+  return(
+    <>
+    <label
+      className="px-4 py-2">
+        {props.label}
+    </label>
+    </>
+
+  )
+}
+
+export function InputGroup(props){
   return (
-    <main >
-      <Nav></Nav>
-      <div className="flex min-h-screen flex-col items-center justify-between px-24">
-      <div className="z-10 w-full max-w-5xl flex flex-col justify-center pt-24 text-sm">
-        <div className='flex justify-center'>Search your serviced item(s) by S/N</div>
-        <div class="flex justify-center my-4 px-4 flex flex-wrap">
-          <input
+    <>
+    <div class={props.className}>
+    <input
             type="text"
             className="flex justify-center rounded-l-md pl-2 focus:outline-none"
             placeholder="L152XXXX-XXXX"/>
@@ -24,7 +33,19 @@ export default function Home() {
           ></Image>
           
           </button>
-        </div>
+          </div>
+    </>
+  )
+}
+
+export default function Home() {
+  return (
+    <main >
+      <Nav></Nav>
+      <div className="flex min-h-screen flex-col items-center justify-between px-24">
+      <div className="z-10 w-full max-w-5xl flex flex-col justify-center pt-24 text-sm">
+        <div className='flex justify-center'>Search your serviced item(s) by S/N</div>
+          <InputGroup className="flex justify-center my-4 px-4 flex flex-wrap"></InputGroup>
         <div className='flex justify-center'>Or</div>
         <div className='flex justify-center'>Scan your service QR from your receipt</div>
         <div className='flex justify-center'>
